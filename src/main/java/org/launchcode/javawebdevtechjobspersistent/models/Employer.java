@@ -1,5 +1,6 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -11,8 +12,7 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "employer", cascade = CascadeType.ALL)
     private final List<Job> jobs = new ArrayList<>();
 
     @NotBlank
