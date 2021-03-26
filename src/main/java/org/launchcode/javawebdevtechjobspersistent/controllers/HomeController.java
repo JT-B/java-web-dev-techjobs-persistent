@@ -2,6 +2,7 @@ package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
@@ -58,6 +59,8 @@ public class HomeController {
         Optional<Employer> result = employerRepository.findById(employerId);
         Employer employer = result.get();
         newJob.setEmployer(employer);
+        List<Skill> skillObjects = (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(skillObjects);
         jobRepository.save(newJob);
         return "redirect:";
     }
