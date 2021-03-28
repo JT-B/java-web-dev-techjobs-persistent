@@ -12,3 +12,8 @@ WHERE location = "St. Louis";
 DROP TABLE job;
 
 ## Part 4: Test it with SQL
+SELECT name, job_skills.jobs_id
+FROM skill
+LEFT JOIN job_skills ON job_skills.skills_id = skill.id
+WHERE job_skills.jobs_id IS NOT NULL
+ORDER by name;
